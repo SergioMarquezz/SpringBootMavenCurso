@@ -36,4 +36,8 @@ public class PathVariableController {
         }
         return true;
     }
+
+    public void hola(){
+
+    }
 }
