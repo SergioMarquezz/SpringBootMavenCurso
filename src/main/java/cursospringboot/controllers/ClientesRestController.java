@@ -1,9 +1,7 @@
 package cursospringboot.controllers;
 
 import cursospringboot.model.Clientes;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,12 +18,12 @@ public class ClientesRestController {
             new Clientes(789,"Diana","dianita987", "789Diana")
     ));
 
-    @GetMapping("clientes")
+    @GetMapping("/clientes")
     public List<Clientes> getClientes(){
         return customers;
     }
 
-    @GetMapping("clientes/{username}")
+    @GetMapping("/clientes/{username}")
     public Clientes getCliente(@PathVariable String username){
 
         for(Clientes usuario: customers){
@@ -35,6 +33,12 @@ public class ClientesRestController {
         }
 
         return null;
+    }
+
+    @PostMapping("/clientes")
+    public Clientes postCliente(@RequestBody Clientes usuarios){
+        customers.add(usuarios);
+        return usuarios;
     }
 
 
