@@ -41,5 +41,20 @@ public class ClientesRestController {
         return usuarios;
     }
 
+    @PutMapping("/clientes")
+    public Clientes modificarCliente(@RequestBody Clientes cliente){
+
+        for (Clientes usuario: customers){
+            if (usuario.getIdCliente() == cliente.getIdCliente()){
+                usuario.setNombre(cliente.getNombre());
+                usuario.setUsuario(cliente.getUsuario());
+                usuario.setContrasenia(cliente.getContrasenia());
+
+                return usuario;
+            }
+        }
+        return null;
+    }
+
 
 }
